@@ -1,0 +1,93 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[a4paper,margin=1.4cm]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{silence}
+\usepackage{tikz}
+\usepackage{diagbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{angles,quotes,calc}
+\WarningFilter{relsize}{Font size}
+
+\newcommand{\rchi}{\raisebox{3pt}{$\chi$}}
+
+\usepackage{anyfontsize}
+\usepackage{relsize}
+\renewcommand{\normalsize}{\larger[2]}
+\usepackage{parskip}
+\usepackage{setspace}
+\setstretch{1.3}
+
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=NavyBlue,
+  urlcolor=RoyalBlue,
+  citecolor=OliveGreen
+}
+
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}[theorem]{Следствие}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{example}[theorem]{Пример}
+
+% ---------- ПОЛЕЗНЫЕ СОКРАЩЕНИЯ ----------
+
+% \usepackage{background}
+% \backgroundsetup{
+%   scale=1,
+%   angle=45,
+%   opacity=0.17,
+%   position=current page.south,
+%   vshift=250pt,
+%   hshift=220pt,
+%   contents={%
+%     \parbox{5\textwidth}{%
+%       \centering
+%       \foreach \x in {0,...,10}{%
+%         \foreach \y in {0,...,10}{%
+%           \raisebox{5mm}{\makebox[0pt][c]{\textsf{\Large tg: @llwet4try00 }}}\hspace{4.5cm}%
+%         }\\[2cm]
+%       }%
+%     }%
+%   }%
+% }
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\eps}{\varepsilon}
+
+\usepackage{sectsty}
+\allsectionsfont{\raggedright}
+
+\begin{document}
+
+\everymath{\displaystyle}
+\everydisplay{\displaystyle}
+
+% \begin{center}
+%   \LARGE{Коллоквиум 1}
+% \end{center}
+
+% \tableofcontents
+
+% \newpage
+\input{part1-10.tex}
+\input{part11-20.tex}
+\input{part21-33.tex}
+
+\end{document}
