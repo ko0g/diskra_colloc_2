@@ -43,3 +43,80 @@ P\left(\text{$=\frac{n}{2}$ орлов}\right) = \binom{n}{n/2} \cdot \left(\fra
 \[
 \left(\frac{n}{k}\right)^k \leq \binom{n}{k} \leq \left(\frac{n \cdot e}{k}\right)^k
 \]
+
+\section{Вероятностный метод: общая формулировка и оценка объединения. Нижняя оценка на диагональные числа Рамсея}
+
+Пусть вер. пространство $(\Omega, P), f: \Omega \rightarrow \mathbb{R}$, $\mathbb{E}(f) = c$
+
+Лемма:
+\[
+\begin{cases}
+    \exists w_{min} \in \Omega: f(w_{min}) \leq c\\
+    \exists w_{max} \in \Omega: f(w_{max}) \geq c\\
+\end{cases}
+\]
+
+Оценка объединения:
+\[
+P\left(\bigcup_{i = 1}^{n} A_i\right) \leq \sum_{i = 1}^{n} P(A_i)
+\]
+
+\subsection{Нижняя оценка на диагональные числа Рамсея}
+\[
+R(k, k) \leq \binom{2k-1}{k-1} < 2^{2k-2}
+\]
+\[
+\left[\frac{k \cdot 2^{k/2}}{2e}\right] < R(k, k), \quad \text{ при $k \geq 3$}
+\]
+
+\section{Производящие функции, определение. Их сложение и умножение на скаляр. Произведение производящих функций, основные свойства арифметических операций. Обратимые производящие
+функции, примеры. Когда производящая функция обратима?}
+
+$(a_0, a_1, a_2, \hdots), a_i \in \mathbb{C} \leftrightarrow A(x) = a_0 + a_1x + a_2x^2 + \hdots$
+
+$A(x) = \sum_{n = 0}^{\infty} a_nx^n$ -- производящая функция (ПФ) $(a_0 ,a_1, \hdots)$
+
+Переменная $x$ -- формальная (вместо нее может быть например \includegraphics[height=1.6em]{гусейн.jpg} )
+
+Мн-во всех ПФ: $\mathbb{C}[[x]]$ (кольцо формальных степенных рядов)
+
+Операции:
+\begin{enumerate}
+    \item $A(x) \pm B(x) = \sum_{n = 0}^{\infty} (a_n \pm b_n) x^n$
+    \item $c \cdot A(x) = \sum_{n = 0}^{\infty} (c \cdot a_n)x^n$, $c$ -- const
+    \item $A(x) \cdot B(x) = (a_0 + a_1x + \hdots)(b_0 + b_1x + \hdots) = \sum_{n = 0}^{\infty} c_nx^n$, где
+    \[
+    c_n = \sum_{k = 0}^{n} a_k \cdot b_{n-k}
+    \]
+\end{enumerate}
+
+Константные ПФ: $c = (c, 0, 0, \hdots) \leftrightarrow C(x) = c$
+
+Свойства операций:
+\begin{enumerate}
+    \item $(A(x) + B(x)) + C(x) = A(x) + (B(x) + C(x))$
+    \item $A(x) + B(x) = B(x) + A(x)$
+    \item $c \cdot A(x) = C(x) \cdot A(x)$, $c$ -- const
+    \item $A(x) \cdot B(x) = B(x) \cdot A(x)$
+    \item $A(x)(B(x) + C(x)) = A(x) B(x) + A(x) C(x)$
+    \item $(A(x) \cdot B(x)) \cdot C(x) = A(x) \cdot (B(x) \cdot C(x))$
+\end{enumerate}
+
+ПФ $B(x)$ обратная к $A(x)$, если $A(x) \cdot B(x) = 1$, $\quad B(x) = A^{-1}(x)$
+
+Пример: $A(x) = 1 + x + x^2 + \hdots$
+\[
+A(x) \cdot \overbrace{(1-x)}^{A^{-1}(x)} = 1 \Rightarrow \sum_{n = 0}^{\infty} x^n = \frac{1}{1-x}
+\]
+
+Свойства:
+\begin{enumerate}
+    \item $\frac{1}{A(x)} \cdot \frac{1}{B(x)} = \frac{1}{A(x) \cdot B(x)}$
+    \item $\frac{A(x)}{B(x)} + \frac{C(x)}{D(x)} = \frac{A(x)D(x) + B(x)C(x)}{B(x)D(x)}$
+\end{enumerate}
+\text{}\\
+ПФ $A(x)$ обратима $\Leftrightarrow a_0 \neq 0$
+
+\section{Формальное дифференцирование производящих функций, свойства производной, правило Лейбница. Подстановка нуля в производящую функцию, вычисление $n$-го коффициента производящей
+функции с использованием производных.}
+
