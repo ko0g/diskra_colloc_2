@@ -197,6 +197,20 @@ a_0 + (a_0 + a_1)x + (a_0 + a_1 + a_2)x^2 + \hdots = A(x) \cdot \frac{1}{1-x}
     \end{center}
 \end{enumerate}
 
+\subsection{Бином Ньютона,
+обобщение на целые показатели.}
+Пусть $\alpha \in \mathbb{C}$, $k \in \mathbb{N} \setminus \{0\}$:
+\begin{itemize}
+    \item $\binom{\alpha}{k} = \frac{\alpha(\alpha-1)\hdots(\alpha-k+1)}{k!}$, $\quad \binom{\alpha}{0} = 1$
+    \item $\binom{-n}{k} = \frac{-n(-n-1)\hdots(-n-k+1)}{k!} = (-1)^k \binom{n+k-1}{k}$
+\end{itemize}
+\text{}
+\\
+Пусть $n \in \mathbb{N}$:
+\[
+(1+x)^{-n} = \sum_{k = 0}^{\infty} \binom{-n}{k} x^k
+\]
+
 \section{Линейные рекурентные соотношения с постоянными коэффициентами. Как устроена производящая функция последовательности, удовлетворяющей линейному рекурентному соотношению
 с постоянными коэффициентами? Явная формула для общего члена такой последовательности,
 метод ее вывода.}
@@ -216,3 +230,191 @@ a_{n+k} = c_1a_{n+k-1} + c_2a_{n+k-2} \hdots + c_ka_n
 \[
 A(x) = \frac{P(x)}{Q(x)}
 \]
+
+\subsection{Явная формула для общего члена такой последовательности,
+метод ее вывода.}
+
+Пусть $a_1, \hdots, a_s$ -- различные корни со степенью вхождения $c_1, \hdots, c_s$. Разложим ПФ на сумму дробей:
+\[
+A(x) = \sum_{i = 1}^{s} \sum_{j = 1}^{c_i} \frac{B_{i, j}}{(1-a_ix)^{j}}
+\]
+Тогда по обобщенному биному Ньютона:
+\[
+[x^n]: \sum_{i = 1}^{s} \left(\sum_{j = 1}^{m_i} B_{i,j} \cdot \binom{-j}{n} \cdot (-a_i)^n\right)=
+\]
+\[
+=\sum_{i = 1}^{s} \left(\sum_{j = 1}^{m_i} B_{i,j} \cdot \binom{n+j-1}{j-1} \cdot a_i^n\right)
+\]
+\section{Числа Фибоначчи: их производящая функция и явная формула (формула Бине).}
+
+Пусть ПФ Фибоначии -- $F(x) = \sum_{n = 0}^{\infty} F_nx^n$:
+\[
+F_n = F_{n-1} + F_{n-2}, \quad F_0 = 0, F_1 = 1
+\]
+\[
+\Downarrow
+\]
+\[
+\sum_{n = 2}^{\infty} F_nx^n = \sum_{n = 2}^{\infty} F_{n-1}x^n + \sum_{n = 2}^{\infty} F_{n-2}x^n
+\]
+\[
+F(x) - F_0 - F_1x = x(F(x) - F_0) + x^2 \cdot F(x)
+\]
+\[
+F(x)(1 - x - x^2) = F_0 + F_1x - F_0x
+\]
+\[
+F(x) = \frac{x}{1-x-x^2}
+\]
+Разложим на сумму дробей:
+\[
+F(x) = \frac{x}{1-x-x^2} = \frac{1}{\sqrt{5}} \left( \underbrace{\frac{1}{1 - \frac{1+\sqrt{5}}{2}x}}_{A} - \underbrace{\frac{1}{1 - \frac{1-\sqrt{5}}{2}x}}_{B} \right)
+\]
+\[
+\begin{cases}
+    A = \sum_{n = 0}^{\infty} \left(\frac{1 + \sqrt{5}}{2}\right)^n x^n\\
+    B = \sum_{n = 0}^{\infty} \left(\frac{1 - \sqrt{5}}{2}\right)^n x^n
+\end{cases}
+\Rightarrow F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n}{\sqrt{5}}
+\]
+\section{Правильные скобочные последовательности. Критерий того, что скобочная последовательность
+является правильной. Рекуррентная формула для числа правильных скобочных последовательностей.}
+Правильные скобочные последовательности определяются следующим образом:
+\begin{enumerate}
+    \item $\emptyset$ -- ПСП
+    \item П -- ПСП $\Rightarrow$ (П) -- ПСП
+    \item П$_{1}$, П$_{2}$ -- ПСП $\Rightarrow$ П$_{1}$П$_{2}$ -- ПСП
+\end{enumerate}
+
+\subsection{Критерий того, что скобочная последовательность
+является правильной.}
+
+Последовательность из '(' и ')' -- ПСП, если и только если
+\begin{enumerate}
+    \item Кол-во '(' равно кол-ву ')'
+    \item Разность кол-ва '(' и кол-ва ')' для любого префикса неотрицательна
+\end{enumerate}
+
+\subsection{Рекуррентная формула для числа правильных скобочных последовательностей.}
+
+Пусть $C_n$ -- кол-во ПСП с $n$ скобками '(':
+\[
+C_n = \sum_{k = 0}^{n - 1} C_k \cdot C_{n-k-1}, \quad C_0 = 1, C_1 = 1
+\]
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+\begin{center}
+    П = $\overbrace{(\underbrace{\text{П}_{1}}_{k})\underbrace{\text{П}_{2}}_{n - k - 1}}^{n}$
+\end{center}
+
+}
+
+\section{Числа Каталана: их производящая функция и явная
+формула}
+Числа Каталана $C_n$:
+\begin{itemize}
+    \item Кол-во ПСП длины $2n$
+    \item Кол-во способов соединить $2n$ точек на окружности непересек. хордами
+\end{itemize}
+\[
+C_n = \sum_{k = 0}^{n - 1} C_k \cdot C_{n-k-1}, \quad C_0 = 1, C_1 = 1
+\]
+
+ПФ чисел Каталана:
+\[
+C(x) = \frac{1-\sqrt{1-4x}}{2x}
+\]
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+\[
+C(x) = c_0 + c_1x + c_2x^2 + \hdots = \sum_{n = 0}^{\infty} c_nx^n
+\]
+\[
+xC^2(x) = \sum_{n = 0}^{\infty}b_nx^{n+1}, \quad b_n = \sum_{k = 0}^{n} C_k C_{n-k} = C_{n+1}
+\]
+\[
+\Downarrow
+\]
+\[
+xC^2(x) = c_1x + c_2x^2 + \hdots = C(x) - 1
+\]
+
+\[
+\Downarrow
+\]
+\[
+xC^2(x) - C(x) + 1= 0
+\]
+Решим уравнение:
+\[
+xC^2(x) - C(x) + 1= x\left(C(x) - \frac{1}{2x}\right)^2 - \frac{1}{4x} + 1 = 
+\]
+\[
+=x\left(C(x) - \frac{1}{2x}\right)^2 + \frac{4x-1}{4x} = 0
+\]
+\[
+4x^2\left(C(x) - \frac{1}{2x}\right)^2 = 1 - 4x
+\]
+\[
+\left(\underbrace{2xC(x) - 1}_{Y(x)}\right)^2 = 1 - 4x
+\]
+\[
+Y^2(x) = 1-4x
+\]
+\[
+Y(x) = \pm (2xC(x) - 1)
+\]
+Так как $C(0) = 1 \Rightarrow Y(x) = -(2xC(x)) - 1$:
+\[
+2xC(x) - 1 = -\sqrt{1-4x}
+\]
+\[
+C(x) = \frac{1-\sqrt{1-4x}}{2x}
+\]
+}
+\subsection{Явная формула}
+\[
+C_n = \frac{\binom{2n}{n}}{n+1}
+\]
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+\[
+1-(1-4x)^{1/2} = 1 - \sum_{k = 0}^{\infty} \binom{1/2}{k} (-4x)^k=
+\]
+\[
+-\sum_{k = 1}^{\infty} \frac{\frac{1}{2}(\frac{1}{2}-1)\hdots(\frac{1}{2}-k+1)}{k!} (-4x)^k =
+\]
+\[
+=-\sum_{k = 1}^{\infty} \frac{1(-1)(-3)\hdots(-(2k-3))}{k! \cdot 2^k} (-4x)^k =
+\]
+\[
+=\sum_{k = 1}^{\infty} \frac{1 \cdot 3 \cdot \hdots \cdot (2k-3)}{k! \cdot 2^k} \cdot 4^k \cdot x^k=
+\]
+\[
+=\sum_{k = 1}^{\infty} \frac{(2k-2)! \cdot 4^k}{k! \cdot 2^k \cdot 2 \cdot 4 \cdot \hdots \cdot (2k-2)}x^k = 
+\]
+\[
+=\sum_{k = 1}^{\infty} \frac{2}{k} \cdot \frac{(2k-2)!}{(k-1)!(k-1!)} x^k = 
+\]
+\[
+=\sum_{k = 1}^{\infty} \frac{2}{k} \cdot \binom{2k-2}{k-1} x^k
+\]
+\[
+\Downarrow
+\]
+\[
+C(x) = \sum_{k = 1}^{\infty} \frac{1}{k} \binom{2k-2}{k-1} x^{k-1} = 
+\]
+\[
+=\sum_{n = 0}^{\infty} \frac{1}{n+1} \binom{2n}{n}x^n
+\]
+\[
+\Downarrow
+\]
+\[
+C_n = \frac{1}{n+1} \binom{2n}{n}
+\]
+}

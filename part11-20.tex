@@ -74,6 +74,49 @@ G = (V, E), V = P: (x, y) \in E \Leftrightarrow \left[
 
 Пошаговое задание распределения:
 
+\begin{center}
+\begin{tikzpicture}[
+    % Настройки размеров (делаем компактно)
+    level distance=1.5cm,    % Расстояние по вертикали между уровнями
+    sibling distance=2.5cm,  % Расстояние по горизонтали на 1 уровне
+    level 2/.style={sibling distance=1.2cm}, % Расстояние на 2 уровне (плотнее)
+    % Стиль узлов: кружок, черная граница, белый фон
+    every node/.style={circle, draw, inner sep=2pt, minimum size=15pt, font=\footnotesize}
+]
+
+    % Корень
+    \node {}
+        % Левая ветка
+        child {
+            node {О}
+            child {
+                node {Р}
+                edge from parent node[left, draw=none] {\tiny 0.5}
+            }
+            child {
+                node {О}
+                edge from parent node[right, draw=none] {\tiny 0.5}
+            }
+            edge from parent node[left, draw=none] {\scriptsize 0.5}
+        }
+        % Правая ветка
+        child {
+            node {Р}
+            child {
+                node {Р}
+                edge from parent node[left, draw=none] {\tiny 0.5}
+            }
+            child {
+                node {О}
+                edge from parent node[right, draw=none] {\tiny 0.5}
+            }
+            edge from parent node[right, draw=none] {\scriptsize 0.5}
+        };
+
+\end{tikzpicture}
+\end{center}
+
+
 Если эксперимент состоит из нескольких шагов, распределение задаётся через дерево событий.
 
 На каждом уровне дерева — возможные исходы текущего шага с условными вероятностями.
@@ -253,7 +296,16 @@ P(\overline{A} | B) = \frac{P(B | \overline{A}) \cdot P(\overline{A})}{P(B)} = \
 Свойства:
 \begin{enumerate}
     \item $f = c \Rightarrow \mathbb{E}(f) = c$, $c$ -- const
-    \item $\mathbb{E}(f + g) = \mathbb{E}(f) + \mathbb{E}(g)$ -- линейность
+    \item $\mathbb{E}(f + g) = \mathbb{E}(f) + \mathbb{E}(g)$ -- линейность{
+            \color{gray}
+        \subsection*{\textit{Доказательство:}}
+        \[
+        \mathbb{E}(f+g) = \sum_{i = 1}^{n} p_i(f(w_i) + g(w_i))=
+        \]
+        \[
+        = \sum_{i = 1}^{n} p_i f(w_i) + \sum_{i = 1}^{n} p_i g(w_i)=\mathbb{E}(f) + \mathbb{E}(g)
+        \]
+    }
     \item $\mathbb{E}(f \cdot c) = c \cdot \mathbb{E}(f)$, $c$ -- const
     \item $A$ -- событие, $I_A(w_i) = \begin{cases}
         1, \text{ $w_i \in A$}\\
@@ -271,6 +323,20 @@ P(\overline{A} | B) = \frac{P(B | \overline{A}) \cdot P(\overline{A})}{P(B)} = \
 \[
 \mathbb{D}(f) = \mathbb{E}(f^2) - (\mathbb{E}(f))^2
 \]
+\vspace{-2cm}
+{
+\color{gray}
+\subsection*{\textit{Доказательство:}}
+\[
+\mathbb{E}((f-\mathbb{E}(f))^2) = \mathbb{E}(f^2 - 2 \cdot f \cdot \mathbb{E}(f) + (\mathbb{E}(f))^2) =
+\]
+\[
+=\mathbb{E}(f^2) - 2\mathbb{E}(f)\mathbb{E}(f) + \mathbb{E}((\mathbb{E}(f))^2)= 
+\]
+\[
+=\mathbb{E}(f^2) - 2(\mathbb{E}(f))^2 + (\mathbb{E}(f))^2 = \mathbb{E}(f^2) - (\mathbb{E}(f))^2
+\]
+}
 
 \section{Неравенства Маркова и Чебышёва.}
 
@@ -280,6 +346,32 @@ P(\overline{A} | B) = \frac{P(B | \overline{A}) \cdot P(\overline{A})}{P(B)} = \
 \[
 P(f \geq \alpha) \leq \frac{\mathbb{E}(f)}{\alpha}
 \]
+\vspace{-2cm}
+{
+\color{gray}
+\subsection*{\textit{Доказательство:}}
+\[
+\mathbb{E}(f) = \sum_{x \in Range(f)} x \cdot P(f = x)
+\]
+\[
+\mathbb{E}(f) = \underbrace{\sum_{x < \alpha} x \cdot P(f = x)}_{\geq 0} + \sum_{x \geq \alpha} x \cdot P(f = x)
+\]
+\[
+\Downarrow
+\]
+\[
+\mathbb{E}(f) \geq \sum_{x \geq \alpha} x \cdot P(f = x)
+\]
+\[
+\sum_{x \geq \alpha} x \cdot P(f = x) \geq \sum_{x \geq \alpha} \alpha \cdot P(f = x) = \alpha \cdot P(f \geq \alpha)
+\]
+\[
+\Downarrow
+\]
+\[
+\mathbb{E}(f) \geq \alpha \cdot P(f \geq \alpha)
+\]
+}
 
 \subsection{Неравенство Чебышёва}
 
@@ -287,3 +379,12 @@ P(f \geq \alpha) \leq \frac{\mathbb{E}(f)}{\alpha}
 \[
 P(|f - \mathbb{E}(f)| \geq \alpha) \leq \frac{\mathbb{D}(f)}{\alpha^2}
 \]
+\vspace{-2cm}
+{
+\color{gray}
+\subsection*{\textit{Доказательство:}}
+Пусть $g = (f - \mathbb{E}(f))^2 \geq 0$:
+\[
+P(|f - \mathbb{E}(f)| \geq \alpha) = \underbrace{P(g \geq \alpha^2) \leq \frac{\overbrace{\mathbb{E}(g)}^{\mathbb{D}(f)}}{\alpha^2}}_{\text{по Маркову}}
+\]
+}
