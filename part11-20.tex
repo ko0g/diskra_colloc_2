@@ -344,8 +344,34 @@ P(\overline{A} | B) = \frac{P(B | \overline{A}) \cdot P(\overline{A})}{P(B)} = \
     \[
     \mathbb{E}(I_A) = \sum_{w \in \Omega} P(w) \cdot I_A(w) = \sum_{w \in A} P(w) = P(A)
     \]
-    \item $\mathbb{E}(f) = \sum_{x \in Range(f)} x \cdot P(f = x)$
+    \item $\mathbb{E}(f) = \sum_{x \in \mathbb{R}} x \cdot P(f = x)$
 \end{enumerate}
+\text{}\\
+Задача о днях рождения
+
+Пусть есть $n = 28$ людей. $\Omega = \{1, \hdots, 365\}^n$ равновероятно
+
+$f$ -- кол-во пар человек, рожденных в один день. $\mathbb{E}(f) = ?$
+
+\[
+f = \sum_{i < j} g_{ij},\quad g_{ij} = \begin{cases}
+    1, \text{ $i, j$ в один день}\\
+    0 \text{ иначе}
+\end{cases}
+\]
+
+\[
+\mathbb{E}(f) = \sum_{i < j} \mathbb{E}(g_{ij}) =
+\]
+\[
+= \sum_{i < j} P(\text{$i$ и $j$ в один день})
+\]
+
+$P(\text{$i$ и $j$ в один день}) = \frac{365}{365^2} = \frac{1}{365} \Rightarrow \mathbb{E}(f) = \binom{n}{2} \cdot \frac{1}{365} = \frac{378}{365} > 1$
+
+\subsection{Вероятностный метод}
+
+
 
 \subsection{Дисперсия случайной величины.}
 
@@ -381,7 +407,7 @@ P(f \geq \alpha) \leq \frac{\mathbb{E}(f)}{\alpha}
 \color{gray}
 \subsection*{\textit{Доказательство:}}
 \[
-\mathbb{E}(f) = \sum_{x \in Range(f)} x \cdot P(f = x)
+\mathbb{E}(f) = \sum_{x \in \mathbb{R}} x \cdot P(f = x)
 \]
 \[
 \mathbb{E}(f) = \underbrace{\sum_{x < \alpha} x \cdot P(f = x)}_{\geq 0} + \sum_{x \geq \alpha} x \cdot P(f = x)

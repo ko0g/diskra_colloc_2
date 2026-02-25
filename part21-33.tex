@@ -15,11 +15,40 @@
 \[
 \mathbb{E}(f \cdot g) = \mathbb{E}(f) \cdot \mathbb{E}(g)
 \]
+\vspace{-1cm}{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+\[
+\E(f) = \sum_{x \in \mathbb{R}} x \cdot P(f = x), \E(g) = \sum_{x \in \mathbb{R}} x \cdot P(g = x), 
+\]
+\[
+\E(f) \cdot \E(g) = \sum_{x \in \mathbb{R}} x \cdot P(f = x) \cdot \sum_{y \in \mathbb{R}} y \cdot P(g = y) = 
+\]
+\[
+=\sum_{x, y \in \mathbb{R}} x \cdot y \cdot \overbrace{P(f = x) \cdot P(g = y)}^{P(f = x \cap g = y)} = \E(f \cdot g)
+\]
+}
 
 Дисперсия:
 \[
 \mathbb{D}(f + g) = \mathbb{D}(f) + \mathbb{D}(g)
 \]
+\vspace{-1cm}{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+\[
+\D(f+g) = \E((f+g)^2) - (\E(f+g))^2=
+\]
+\[
+=\E(f^2 + 2fg + g^2) - (\E(f) + \E(g))^2 = 
+\]
+\[
+=\E(f^2) - 2\E(f)\E(g) + \E(g^2) - (\E(f))^2 - 2\E(f)\E(g) - (\E(g))^2 = 
+\]
+\[
+=\E(f^2)-(\E(f))^2 + \E(g^2) - (\E(g))^2 = \D(f) + \D(g)
+\]
+}
 
 \section{Формула Стирлинга. Асимптотическое выражение для вероятности выпадения ровно половины
 орлов при бросании честной монеты.}
@@ -43,6 +72,27 @@ P\left(\text{$=\frac{n}{2}$ орлов}\right) = \binom{n}{n/2} \cdot \left(\fra
 \[
 \left(\frac{n}{k}\right)^k \leq \binom{n}{k} \leq \left(\frac{n \cdot e}{k}\right)^k
 \]
+\vspace{-1.5cm}{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+1) $\binom{n}{k} = \frac{n(n-1)\hdots(n-k+1)}{k(k-1)\hdots1} = \overbrace{\frac{n}{k} \cdot\frac{n-1}{k-1} \cdot \hdots \cdot \frac{n-k+1}{1}}^{k} \geq \left(\frac{n}{k}\right)^k$
+
+При $a \geq b \geq 1: \frac{a}{b} \leq \frac{a-1}{b-1}$
+
+2) $\forall x \in \mathbb{R}: e^x \geq 1 + x$
+
+Покажем, что $\sum_{i = 0}^{k} \binom{n}{i} \leq \left(\frac{n \cdot e}{k}\right)^k$
+
+Фикс. $t \in (0; 1)$:
+\[
+\sum_{i = 0}^{k} \binom{n}{i} \leq \sum_{i = 0}^{k} \binom{n}{i} \cdot t^{i-k} = \frac{1}{t^k} \sum_{i = 0}^{k} \binom{n}{i} \cdot t^i \leq \frac{1}{t^k} \sum_{i = 0}^{n} \binom{n}{i} \cdot t^i =
+\]
+\[
+=\frac{1}{t^k}(1+t)^n
+\]
+
+При $t = \frac{k}{n}$: $\left(\frac{n}{k}\right)^k \cdot \underbrace{\left(1+\frac{k}{n}\right)^n}_{\rightarrow e} \Rightarrow \left(\frac{n}{k}\right)^k \cdot e^k = \left(\frac{n \cdot e}{k}\right)^k$
+}
 
 \section{Вероятностный метод: общая формулировка и оценка объединения. Нижняя оценка на диагональные числа Рамсея}
 
@@ -55,6 +105,21 @@ P\left(\text{$=\frac{n}{2}$ орлов}\right) = \binom{n}{n/2} \cdot \left(\fra
     \exists w_{max} \in \Omega: f(w_{max}) \geq c\\
 \end{cases}
 \]
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+\[
+c = \E(f) = \sum_{i = 1}^{n} p_i \cdot f(w_i)
+\]
+От противного: $\forall w: f(w) > c$:
+\[
+\sum_{i = 1}^{n} p_i \cdot c < \sum_{i = 1}^{n} p_i \cdot f(w_i)
+\]
+\[
+c < c
+\]
+Противоречие $\Rightarrow \exists w: f(w) \leq c$
+}
 
 Оценка объединения:
 \[

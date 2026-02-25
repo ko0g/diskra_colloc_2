@@ -292,10 +292,50 @@ $\forall n, k \geq 2: R(n,k)$ -- конечно
 \[
 R(n,k) \leq R(n-1, k) + R(n, k - 1)
 \]
+\vspace{-2cm}
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+Индукция по $(n+k)$:
+
+Переход $(n+k-1) \rightarrow (n+k)$:
+
+Пусть $R(n-1, k) + R(n,k - 1) = N$. Рассмотрим граф $G$ на $N$ вершинах:
+
+Возьмем $\forall v \in G$: $deg(v) = x, x + y = N - 1 \Rightarrow
+\left[
+    \begin{matrix}
+        x \geq R(n-1, k)\\
+        y \geq R(n-1, k)\\
+    \end{matrix}
+\right.
+$
+
+1) $x \geq \overbrace{R(n-1, k)}^{\text{для $G_1$}} \Rightarrow$ в $G_1$ найдется или клика разм. $(n-1)$, или нез. мн-во разм. $k$:
+
+Если нез. мн-во размером $k$, то все получилось. Если клика размером $(n-1)$, то $v$ соединена со всеми вершинами в $G_1 \Rightarrow$ получилась клика размером $n$
+
+Второй случай аналогично
+}
+
 Верхняя оценка:
 \[
 R(n,k) \leq \binom{n+k-2}{n-1} = \binom{n+k-2}{k-1}
 \]
+\vspace{-1.5cm}
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+Индукция по $(n+k)$:
+
+Имеем:
+\[
+R(n,k) \leq R(n-1, k) + R(n, k - 1) \leq \binom{n-1+k-2}{n-2} + \binom{n+k-1-2}{n-1} = 
+\]
+\[
+=\binom{n+k-3}{n-2} + \binom{n+k-3}{n-1} = \binom{n+k-2}{n-1}
+\]
+}
 
 \section{Частично упорядоченные множества: строгий и нестрогий частичные порядки, линейный порядок. Утверждение о связи строгого и нестрогого порядков.}
 
@@ -326,10 +366,28 @@ R(n,k) \leq \binom{n+k-2}{n-1} = \binom{n+k-2}{k-1}
     \[
     < \; := \; \leq \setminus \; \{(a,a) \; | \; a \in A\}
     \]
+    \vspace{-2cm}{
+    \color{gray}
+    \subsection*{\textit{Доказательство:}}
+    \begin{enumerate}
+        \item $\lnot \; aRa$
+        \item Пусть $a < b \land b < c \Rightarrow a \neq b, b \neq c \Rightarrow a \leq b \land b \leq c \Rightarrow a \leq c \Rightarrow a < c$ ($a \neq c$)
+    \end{enumerate}
+    }
     \item Пусть $<$ -- строгий порядок. Тогда
     \[
     \leq \; := \; < \cup \; \{(a,a) \; | \; a \in A\}
     \]
+    \vspace{-2cm}{
+    \color{gray}
+    \subsection*{\textit{Доказательство:}}
+    \begin{enumerate}
+        \item $a \leq a$
+        \item Пусть $a \leq b \land b \leq a \Rightarrow a = b$
+        \item Пусть $a \leq b \land b \leq c$. Если не все попарно различны, то очев
+        Иначе $a < b \land b < c \Rightarrow a < c \Rightarrow a \leq c$
+    \end{enumerate}
+    }
 \end{enumerate}
 
 \section{Операции с частично упорядоченными множествами: сумма порядков, покоординатный порядок,
@@ -468,12 +526,26 @@ R(n,k) \leq \binom{n+k-2}{n-1} = \binom{n+k-2}{k-1}
 
 Если $\varphi: P \rightarrow Q$ -- изоморфизм $P, Q \Rightarrow \varphi([a, b]) = [\varphi(a), \varphi(b)]$
 
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+1) $a \leq c \leq b \Rightarrow \varphi(a) \leq \varphi(c) \leq \varphi(b)$
+
+2) $\varphi(a) \leq y \leq \varphi(b) \Rightarrow a \leq \varphi^{-1}(y) \leq b$
+}
+
 \subsection{Теорема об изоморфизме счётных плотных линейных порядков без наименьшего и
 наибольшего элемента}
 
 Плотный порядок: $\forall a < b: \exists c: a < c < b$
 
 Теорема: Любые два счётных плотных линейных порядка без наим/наиб элемента изоморфны
+
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+
+}
 
 \section{Бесконечно убывающие цепи. Принцип математической индукции для частично упорядоченных
 множеств. Фундированные множества, теорема об эквивалентности трех определений фундированного множества.}
@@ -500,3 +572,48 @@ a_1 > a_2 > a_3 > \hdots
     }
 \end{enumerate}
 База индукции -- проверить утверждения на минимальных элементах
+\vspace{-1.5cm}{
+    \color{gray}
+\subsection*{\textit{Доказательство эквивалентности:}}
+$\lnot$ 1) $\Rightarrow$ $\lnot$ 2):
+Пусть $\exists p_1 > p_2 > \hdots \Rightarrow x = \{p_1, p_2, \hdots\}$ -- нет мин. элемента
+
+$\lnot$ 2) $\Rightarrow$ $\lnot$ 1):
+$\forall X \subseteq P, X \neq \emptyset$: в $X$ нет мин. эл.
+\[
+p_1 \in X \Rightarrow \exists p_2 < p_1
+\]
+\[
+p_2 \in X \Rightarrow \exists p_3 < p_2
+\]
+\[
+\vdots
+\]
+\[
+\Downarrow
+\]
+\[
+\exists p_1 > p_2 > \hdots
+\]
+
+1) $\Rightarrow$ 3):
+
+$X = \{p \in P \; | \; A(p) = 0\}$. Пусть $X \neq \emptyset$:
+\[
+\exists p' \in X, p' = \min(X)
+\]
+Тогда $\forall q < p': A(q) = 1 \Rightarrow A(p') = 1 \Rightarrow$ противоречие $\Rightarrow X = \emptyset$
+
+3) $\Rightarrow$ 1):
+
+Пусть $X \subseteq P, X \neq \emptyset$. Пусть в $X$ нет мин. эл:
+\[
+A(p) = (p \notin X)
+\]
+\[
+\forall p \in P (\forall q < p: q \notin X) \Rightarrow \overbrace{p \notin X}^{\text{верно, иначе $\exists \min(X)$}} \Rightarrow
+\]
+\[
+\Rightarrow \forall p \in P: p \notin X \Rightarrow X = \emptyset \Rightarrow \text{противоречие}
+\]
+}
