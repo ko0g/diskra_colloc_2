@@ -121,6 +121,40 @@ c < c
 Противоречие $\Rightarrow \exists w: f(w) \leq c$
 }
 
+\subsection{Пример применения вероятностного метода
+для поиска разреза в графе величины более половины числа ребер}
+
+Пусть $G = (V, E)$ -- граф. Тогда $\exists$ разрез $S \subseteq V$: $|S| \geq \frac{|E|}{2}$
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+$\Omega$ -- все подмножества $n$ вершин ($|\Omega| = 2^n$). Все равновероятно
+
+Пусть $f(S) = |E(S, V \setminus S)|$ -- случ величина
+
+$\E(f) = \sum_{e \in E} \E(I_e)$:
+\[
+I_e = \begin{cases}
+    1, \text{ если $e \in E(S, V \setminus S)$}\\
+    0, \text{ иначе}
+\end{cases}
+\]
+$
+\E(I_e) = P(e \in E(S, V \setminus S)) = 2 \cdot \frac{1}{4} = \frac{1}{2}$ (все состояния вершин на концах ребра)
+\[
+\Downarrow
+\]
+\[
+\E(f) = \frac{|E|}{2}
+\]
+\[
+\Downarrow
+\]
+\begin{center}
+    По лемме существует исход $S \in \Omega$ для которого $f(S) \geq \mathbb{E}(f)$
+\end{center}
+}
+
 Оценка объединения:
 \[
 P\left(\bigcup_{i = 1}^{n} A_i\right) \leq \sum_{i = 1}^{n} P(A_i)
@@ -360,12 +394,43 @@ F(x) = \frac{x}{1-x-x^2} = \frac{1}{\sqrt{5}} \left( \underbrace{\frac{1}{1 - \f
     \item Разность кол-ва '(' и кол-ва ')' для любого префикса неотрицательна
 \end{enumerate}
 
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+$\Rightarrow$: (индукция по построению)
+
+$\Leftarrow$: Полная индукция по длине слова: $\forall$ слово такого вида -- ПСП.
+
+Переход ($\forall k < n \rightarrow n$):
+
+Рассмотрим префикс min длины $k$, на котором кол-во '(' равно кол-ву ')':
+
+\begin{center}
+    (П$_1$)П$_2$ -- закрывающая скобка ')' на позиции $k$
+\end{center}
+К П$_2$ применяется предположение индукции . На позиции $k$ разность скобок равна 0 $\Rightarrow \forall i < k$ разность строго больше 0. Префикс П$_1$ -- префикс исходной минус '(' $\Rightarrow$ в П$_1$ для каждого префикса разность неотрицательна и в П$_1$ равно кол-во '(' и ')' $\Rightarrow$ П$_1$ -- ПСП
+\[
+\Downarrow
+\]
+\begin{center}
+    (П$_1$)П$_2$ -- ПСП
+\end{center}
+}
+Следствие: $\forall$ ПСП представляется в виде (П$_1$)П$_2$, причем ед. образом
+\vspace{-1.5cm}{
+    \color{gray}
+\subsection*{\textit{Доказательство единственности:}}
+
+}
+
+
 \subsection{Рекуррентная формула для числа правильных скобочных последовательностей.}
 
 Пусть $C_n$ -- кол-во ПСП с $n$ скобками '(':
 \[
 C_n = \sum_{k = 0}^{n - 1} C_k \cdot C_{n-k-1}, \quad C_0 = 1, C_1 = 1
 \]
+\vspace{-1.5cm}
 {
     \color{gray}
 \subsection*{\textit{Доказательство:}}
@@ -443,7 +508,7 @@ C(x) = \frac{1-\sqrt{1-4x}}{2x}
 \[
 C_n = \frac{\binom{2n}{n}}{n+1}
 \]
-{
+\vspace{-1.5cm}{
     \color{gray}
 \subsection*{\textit{Доказательство:}}
 \[
