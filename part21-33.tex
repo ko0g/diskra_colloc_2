@@ -329,6 +329,37 @@ a_{n+k} = c_1a_{n+k-1} + c_2a_{n+k-2} \hdots + c_ka_n
 \[
 A(x) = \frac{P(x)}{Q(x)}
 \]
+\vspace{-1cm}{
+\color{gray}
+\subsection*{\textit{Доказательство:}}
+Умножим $A(x)$ на $(c_1x + c_2x^2 + \hdots + c_kx^k)$:
+\[
+A(x) \cdot c_1x: a_0c_1x + a_1c_1x^2 + \hdots + a_{k-1}c_1x^k + \hdots
+\]
+\[
+A(x) \cdot c_2x^2: a_0c_2x^2 + a_1c_2x^3 + \hdots + a_{k-2}c_2x^k + \hdots
+\]
+\[
+\vdots
+\]
+\[
+A(x) \cdot c_kx^k: a_0c_kx^k + \hdots
+\]
+Коэфф. при $[x^k]: c_1a_{k-1} + \hdots + c_ka_0$ -- рекурента
+Слагаемые с $x^d, d < k$ -- $\overline{P}(x)$:
+\[
+A(x)(c_1x + c_2x^2 + \hdots + c_kx^k) = \overline{P}(x) + \sum_{t \geq k} b_tx^t=
+\]
+\[
+=A(x) + \overbrace{\overline{P}(x) - \sum_{t < k} b_tx^t}^{P(x)}, \deg P < k
+\]
+\[
+\Downarrow
+\]
+\[
+A(x)\underbrace{(-1 + c_1x + \hdots + c_kx^k)}_{Q(x)} = P(x)
+\]
+}
 
 \subsection{Явная формула для общего члена такой последовательности,
 метод ее вывода.}
@@ -339,7 +370,7 @@ A(x) = \sum_{i = 1}^{s} \sum_{j = 1}^{c_i} \frac{B_{i, j}}{(1-a_ix)^{j}}
 \]
 Тогда по обобщенному биному Ньютона:
 \[
-[x^n]: \sum_{i = 1}^{s} \left(\sum_{j = 1}^{m_i} B_{i,j} \cdot \binom{-j}{n} \cdot (-a_i)^n\right)=
+[x^n]: \sum_{i = 1}^{s} \left(\sum_{j = 1}^{m_i} B_{i,j} \cdot \binom{-n}{j} \cdot (-a_i)^n\right)=
 \]
 \[
 =\sum_{i = 1}^{s} \left(\sum_{j = 1}^{m_i} B_{i,j} \cdot \binom{n+j-1}{j-1} \cdot a_i^n\right)

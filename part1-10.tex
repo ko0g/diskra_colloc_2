@@ -544,7 +544,45 @@ R(n,k) \leq R(n-1, k) + R(n, k - 1) \leq \binom{n-1+k-2}{n-2} + \binom{n+k-1-2}{
 {
     \color{gray}
 \subsection*{\textit{Доказательство:}}
+Построим явную биекцию. Пронумеруем элементы:
 
+$P = \{p_1, p_2, p_3, \hdots\}$, $Q = \{q_1, q_2, q_3, \hdots\}$
+
+Строим изоморфизм $\varphi: P \rightarrow Q$:
+
+$\varphi_1$: $p_1 \rightarrow q_1$
+
+$\vdots$
+
+$\varphi_n \;$: $\quad p_{i_1} <_P p_{i_2} <_P \hdots <_P p_{i_{n-1}} <_P p_{i_n}$
+
+$\quad \quad \quad \downarrow \quad \quad \;$ $\downarrow \quad \quad \hdots \quad \quad \downarrow \quad \quad \quad \;$ $\downarrow$
+
+$\quad \quad \quad q_{i_1} <_Q q_{i_2} <_Q \hdots <_Q q_{i_{n-1}} <_Q q_{i_n}$
+
+Рассмотрим $p_k \notin \{p_{i_1}, \hdots, p_{i_n}\}$ с $\min k$:
+
+\begin{enumerate}
+    \item Если $p_k$ между двумя $p_{i_m}$ и $p_{i_{m+1}}$, то из за плотности $\exists q_{k}: q_{j_m} < q_k < q_{j_{m+1}}$. Переведем $p_k \rightarrow q_k$
+    \item Если он меньше $p_{i_1}$ или больше $p_{i_n}$ -- из за отсутствия наибольшего $\exists q_{k}$ который $< q_{j_1}$ или $> q_{j_n}$ соответственно
+\end{enumerate}
+Но такое отображение может быть не сюръективным. Чтобы это исправить, нужно после определения образа $p_k$ рассматривать $q_{k'} \notin \{q_{j_1}, \hdots, q_{j_n}, q_k\}$ с $\min k'$. Ищем подходящий $p_k'$ аналогично
+
+После итерации:
+\[
+\begin{cases}
+    p_k \rightarrow q_k\\
+    p_k' \rightarrow q_k'
+\end{cases}
+\text{ переходим $\varphi_n$ до $\varphi_{n+1}$}
+\]
+Теперь для каждого элемента найдется шаг когда он будет покрыт
+\[
+\Downarrow
+\]
+\[
+\varphi = \varphi_1 \cup \hdots \text{ -- биекция}
+\]
 }
 
 \section{Бесконечно убывающие цепи. Принцип математической индукции для частично упорядоченных
