@@ -244,6 +244,31 @@ P\left(X(G) \geq \frac{n}{2}\right) \to 0, n \to \infty
 \[
 \leq \sum_{i = 1}^{k} (np)^i \leq (k-2)(np)^k
 \]
+По неравенству Маркова:
+\[
+P\left(X(G) \geq \frac{n}{2}\right) \leq \frac{\E(X(G))}{n/2} \leq (k-2) \frac{(np)^k}{n/2} = 2(k-2)\frac{(\ln n)^k}{n} \to 0
+\]
+\hrule
+\text{}
+\\
+Вероятность $p = \frac{\ln n}{n}$, фикс. $n, G(n, p)$:
+
+\[
+\begin{cases}
+    P\left(\alpha(G) \geq \frac{n}{2k}\right) < 1/2\\
+    P\left(X(G) \geq \frac{n}{2}\right) < 1/2
+\end{cases}
+\Rightarrow
+\exists G:
+\begin{cases}
+    \alpha(G) < \frac{n}{2k}\\
+    X(G) < \frac{n}{2}
+\end{cases}
+\]
+Удалим по одной вершине из всех циклов длины $\leq k \rightarrow G'$:
+\begin{center}
+    $S(G') > k$, $\chi(G) \geq \frac{|G'|}{\alpha(G')} > \frac{n/2}{n/2k} = k \Rightarrow G'$ -- подходит
+\end{center}
 }
 
 \section{Производящие функции, определение. Их сложение и умножение на скаляр. Произведение производящих функций, основные свойства арифметических операций. Обратимые производящие
