@@ -401,16 +401,45 @@ a_0 + (a_0 + a_1)x + (a_0 + a_1 + a_2)x^2 + \hdots = A(x) \cdot \frac{1}{1-x}
 
 \subsection{Бином Ньютона,
 обобщение на целые показатели.}
+Для $n \in \mathbb{N}$:
+\[
+\binom{-n}{k} = \frac{-n(-n-1)\hdots(-n-k+1)}{k!} = (-1)^k \binom{n+k-1}{k}
+\]
+
 Пусть $\alpha \in \mathbb{C}$, $k \in \mathbb{N} \setminus \{0\}$:
-\begin{itemize}
-    \item $\binom{\alpha}{k} = \frac{\alpha(\alpha-1)\hdots(\alpha-k+1)}{k!}$, $\quad \binom{\alpha}{0} = 1$
-    \item $\binom{-n}{k} = \frac{-n(-n-1)\hdots(-n-k+1)}{k!} = (-1)^k \binom{n+k-1}{k}$
-\end{itemize}
+\[
+\binom{\alpha}{k} = \frac{\alpha(\alpha-1)\hdots(\alpha-k+1)}{k!}, \quad \binom{\alpha}{0} = 1
+\]
 \text{}
 \\
-Пусть $n \in \mathbb{N}$:
+Пусть $n \in \mathbb{Z}$:
 \[
-(1+x)^{-n} = \sum_{k = 0}^{\infty} \binom{-n}{k} x^k
+(1+x)^{n} = \sum_{k = 0}^{\infty} \binom{n}{k} x^k
+\]
+\vspace{-1cm}
+{
+    \color{gray}
+\subsection*{\textit{Доказательство:}}
+\[
+A(x) = \frac{1}{(1-x)^n} = \overbrace{(1+x+\hdots)\hdots(1+x+\hdots)}^{n}
+\]
+$[x^k]$ -- кол-во решений уравнения $
+\begin{cases}
+    y_1 + \hdots + y_n = k\\
+    y_i \geq 0
+\end{cases}
+$
+
+$[x^k] = \binom{n+k-1}{n-1} \Rightarrow A(x) = \sum_{k = 0}^{\infty} \binom{n+k-1}{k} x^k$
+
+$\frac{1}{(1+x)^n} = \frac{1}{(1-(-x))^n} \sum_{k = 0}^{\infty} (-1)^k \binom{n+k-1}{k} x^k = \sum_{k = 0}^{\infty} \binom{-n}{k} x^k$
+}
+
+\subsection{Комплексные показатели}
+
+Пусть $\alpha \in \mathbb{C}$:
+\[
+(1+x)^\alpha = \sum_{k = 0}^{\infty} \binom{\alpha}{k} x^k
 \]
 
 \section{Линейные рекурентные соотношения с постоянными коэффициентами. Как устроена производящая функция последовательности, удовлетворяющей линейному рекурентному соотношению
@@ -542,7 +571,7 @@ $\Leftarrow$: Полная индукция по длине слова: $\forall
 \begin{center}
     (П$_1$)П$_2$ -- закрывающая скобка ')' на позиции $k$
 \end{center}
-К П$_2$ применяется предположение индукции . На позиции $k$ разность скобок равна 0 $\Rightarrow \forall i < k$ разность строго больше 0. Префикс П$_1$ -- префикс исходной минус '(' $\Rightarrow$ в П$_1$ для каждого префикса разность неотрицательна и в П$_1$ равно кол-во '(' и ')' $\Rightarrow$ П$_1$ -- ПСП
+К П$_2$ применяется предположение индукции . На позиции $k$ разность скобок равна 0 $\Rightarrow \forall i < k$ разность строго больше 0. Префикс П$_1$ -- префикс исходной без '(' $\Rightarrow$ в П$_1$ для каждого префикса разность неотрицательна и в П$_1$ равно кол-во '(' и ')' $\Rightarrow$ П$_1$ -- ПСП
 \[
 \Downarrow
 \]
