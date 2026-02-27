@@ -167,6 +167,84 @@ R(k, k) \leq \binom{2k-1}{k-1} < 2^{2k-2}
 \[
 \left[\frac{k \cdot 2^{k/2}}{2e}\right] < R(k, k), \quad \text{ при $k \geq 3$}
 \]
+\vspace{-2cm}
+{
+\color{gray}
+\subsection*{\textit{Доказательство:}}
+Построим граф на $n = \left[\frac{k \cdot 2^{k/2}}{2e}\right]$ вершинах, в котором нет клик и нез. мн-ва размера $k$
+
+$\Omega$ -- все графы на $n$ вершинах ($|\Omega| = 2^{\binom{n}{2}}$). Все графы равновероятны
+
+Для $W \subseteq \{1, \hdots, n\}, |W| = k$: $A_w$ = '$W$ -- клика', $B_w$ = '$W$ -- нез. мн-во':
+
+$P(A_w) = P(B_w) = \frac{2^{\binom{n}{2} - \binom{k}{2}}}{2^{\binom{n}{2}}}$ (фикс. ребра между $k$ вершинами)
+
+\[
+P(\text{в $G$ есть клика/нез. мн-во размера $k$}) = P(\bigcup_{|W| = k} (A_w \cup B_w)) \leq
+\]
+\[
+\leq \sum_{|W| = k} P(A_w) + P(B_w) = \binom{n}{k} \cdot 2^{1 - \binom{k}{2}} \leq \left(\frac{n \cdot e}{k}\right)^k \cdot 2^{1 - \binom{k}{2}}
+\]
+Подставляем $n$:
+\[
+\left(\frac{n \cdot e}{k}\right)^k \cdot 2^{1 - \binom{k}{2}} \leq \left(\frac{k \cdot 2^{k/2} \cdot e}{2e \cdot k}\right)^k \cdot 2^{1-\binom{k}{2}} =
+\]
+\[
+=2^{k^2/2 - k + 1 - k(k-1)/2} = 2^{1 - k/2} < 1 \text{ при $k \geq 3$}
+\]
+\[
+\Downarrow
+\]
+\[
+\exists G \text{ в дополнении события, такой что нет клики/нез. мн-ва размера $k$}
+\]
+}
+
+\section{Теорема Эрдёша о существовании графа со сколь угодно большим хроматическим числом и сколь
+угодно большим обхватом: выбор вероятностного пространства, план доказательства, формулировки необходимых лемм.}
+
+Обхват графа $G$: $S(G)$ -- мин. длина цикла в $G$
+
+Теорема Эрдёша: $\forall k \in \mathbb{N}: \;\exists$ граф $G$ с $S(G) > k, \chi(G) > k$
+{
+\color{gray}
+\subsection*{\textit{Доказательство:}}
+Используем модель Эрдёша-Реньи случайных графов $G(n, p), p \in [0; 1]$
+
+Граф на $n$ вершинах, ребро независимо проводится с вероятностью $p$
+
+Пусть $p = \frac{\ln n}{n}$:
+
+Лемма 1: $P\left(\alpha(G) \geq \frac{n}{2k}\right) \to 0, n \to \infty$:
+
+Пусть $r = \lceil \frac{n}{2k} \rceil$:
+\[
+P\left(\alpha(G) \geq r\right) = P(\bigcup_{X, |X| = r} (X \text{ -- нез. мн-во})) \leq \binom{n}{r} (1-p)^{\binom{r}{2}} \leq
+\]
+\[
+\leq \left(\frac{n e}{r}\right)^r \cdot (1-p)^{r(r-1)/2} = \left(\frac{n e}{r}(1-p)^{(p-1)/2}\right)^r
+\]
+Покажем, что $\frac{n e}{r}(1-p)^{(p-1)/2} \to 0$:
+\[
+\frac{n e}{r}(1-p)^{(p-1)/2} \leq \frac{n e}{r} e^{-p \cdot (r-1)/2} \leq 2k e \cdot e^{-p \cdot (r-1)/2} \leq 
+\]
+\[
+\leq 2k e \cdot e^{-p \cdot r/4} \leq 2k e \cdot n^{-1/8k} \to 0
+\]
+\\\\
+Лемма 2: $X(G)$ -- колво циклов длины $\leq k$ в $G$. Тогда
+\[
+P\left(X(G) \geq \frac{n}{2}\right) \to 0, n \to \infty
+\]
+Количество циклов на $i$ вершинах: $\frac{i!}{2i} = \frac{(i-1)!}{2}$, вероятность -- $p^i$
+
+\[
+\E(X(G)) = \sum_{i = 3}^{k} \binom{n}{i} \cdot \frac{(i-1)!}{2} \cdot p^i = \frac{n(n-1)\hdots(n-i+1)}{2i} p^i \leq 
+\]
+\[
+\leq \sum_{i = 1}^{k} (np)^i \leq (k-2)(np)^k
+\]
+}
 
 \section{Производящие функции, определение. Их сложение и умножение на скаляр. Произведение производящих функций, основные свойства арифметических операций. Обратимые производящие
 функции, примеры. Когда производящая функция обратима?}
