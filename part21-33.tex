@@ -222,7 +222,7 @@ P(\text{в $G$ есть клика/нез. мн-во размера $k$}) = P(\b
 P\left(\alpha(G) \geq r\right) = P(\bigcup_{X, |X| = r} (X \text{ -- нез. мн-во})) \leq \binom{n}{r} (1-p)^{\binom{r}{2}} \leq
 \]
 \[
-\leq \left(\frac{n e}{r}\right)^r \cdot (1-p)^{r(r-1)/2} = \left(\frac{n e}{r}(1-p)^{(p-1)/2}\right)^r
+\leq \left(\frac{n e}{r}\right)^r \cdot (1-p)^{r(r-1)/2} = \left(\frac{n e}{r}(1-p)^{(r-1)/2}\right)^r
 \]
 Покажем, что $\frac{n e}{r}(1-p)^{(p-1)/2} \to 0$:
 \[
@@ -242,7 +242,7 @@ P\left(X(G) \geq \frac{n}{2}\right) \to 0, n \to \infty
 \E(X(G)) = \sum_{i = 3}^{k} \binom{n}{i} \cdot \frac{(i-1)!}{2} \cdot p^i = \frac{n(n-1)\hdots(n-i+1)}{2i} p^i \leq 
 \]
 \[
-\leq \sum_{i = 1}^{k} (np)^i \leq (k-2)(np)^k
+\leq \sum_{i = 3}^{k} (np)^i \leq (k-2)(np)^k
 \]
 По неравенству Маркова:
 \[
@@ -368,12 +368,12 @@ a_0 + (a_0 + a_1)x + (a_0 + a_1 + a_2)x^2 + \hdots = A(x) \cdot \frac{1}{1-x}
     \]
     \item Кол-во салатов:\\
     \begin{tabular}{@{}l|l@{}}
-    \begin{minipage}[t]{0.4\linewidth}
+    \begin{minipage}[t]{0.45\linewidth}
     \begin{itemize}
-        \item Перец -- 0 или 1
-        \item Редиска -- $0,2,4,\hdots$
-        \item Баклажан -- любое
-        \item Помидор -- $\leq 3$
+        \item Перец -- 0 или 1 шт.
+        \item Редиска -- $0,2,4,\hdots$ шт.
+        \item Баклажан -- любое шт.
+        \item Помидор -- $\leq 3$ шт.
     \end{itemize}
     \end{minipage}
     &
